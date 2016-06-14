@@ -47,6 +47,9 @@ setup_sources() {
 	apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367
 	echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu xenial main" > /etc/apt/sources.list.d/ansible.list
 
+	#VirtualBox
+	wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+	echo "deb http://download.virtualbox.org/virtualbox/debian xenial contrib" > /etc/apt/sources.list.d/virtualbox.list
 }
 
 setup_base() {
@@ -59,9 +62,11 @@ setup_base() {
 		atom \
 		rxvt-unicode-256color \
 		network-manager \
+		openvpn \
 		google-chrome-stable \
 		libappindicator3-1 \
-		libappindicator1
+		libappindicator1 \
+		virtualbox-5.0
 
 	apt-get autoremove
 	apt-get autoclean
@@ -86,6 +91,7 @@ setup_wm() {
 		slim \
 		xorg \
 		network-manager-gnome \
+		network-manager-openvpn-gnome \
 		gnome-keyring \
 		xserver-xorg
 }
@@ -103,4 +109,3 @@ main() {
 }
 
 main "$@"
-
