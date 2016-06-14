@@ -26,7 +26,7 @@ setup_dotfiles() {
 
 setup_config() {
 	for f in config/*; do
-		echo "ln -sfn $HOME/dotfiles/$f $HOME/.$f"
+		ln -sfn $HOME/dotfiles/$f $HOME/.$f
 	done
 }
 
@@ -47,9 +47,13 @@ setup_sources() {
 	apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367
 	echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu xenial main" > /etc/apt/sources.list.d/ansible.list
 
-	#VirtualBox
-	wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | sudo apt-key add -
+	# VirtualBox
+	wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
 	echo "deb http://download.virtualbox.org/virtualbox/debian xenial contrib" > /etc/apt/sources.list.d/virtualbox.list
+
+	# Neovim
+	apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 9DBB0BE9366964F134855E2255F96FCF8231B6DD
+	echo "deb http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu xenial main" > /etc/apt/sources.list.d/neovim.list
 }
 
 setup_base() {
@@ -71,6 +75,24 @@ setup_base() {
 	apt-get autoremove
 	apt-get autoclean
 	apt-get clean
+}
+
+setup_neovim() {
+	apt-get install -y \
+		neovim \
+		python-dev \
+		python-pip \
+		python3-dev \
+		python3-pip
+
+	update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+	update-alternatives --config vi
+	update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+	update-alternatives --config vim
+	update-alternatives --install /usr/bin/editor editor /usr/bin/nvim 60
+	update-alternatives --config editor
+
+	pip install neovim
 }
 
 setup_docker() {
@@ -102,6 +124,7 @@ main() {
 	setup_config
 	setup_sources
 	setup_base
+	setup_neovim
 	setup_docker
 	setup_wm
 
