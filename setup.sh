@@ -109,6 +109,7 @@ setup_wm() {
 		i3 \
 		i3lock \
 		i3status \
+		scrot \
 		rofi \
 		slim \
 		xorg \
