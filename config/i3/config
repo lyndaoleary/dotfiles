@@ -151,5 +151,13 @@ bar {
 bindsym $mod+d exec rofi -show run -bg "#00171d" -fg "#c1cacd" -terminal urxvt -o 85
 bindsym $mod+l exec i3lock -c 111111
 
+# Screenshots
+# Screenshot fullscreen
+bindsym Print exec "scrot -q 85 '/home/lyndaoleary/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png'"
+# Screenshot with selection
+bindsym $mod+Print exec "sleep 0.2; scrot -q 85 -s '/home/lyndaoleary/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png'"
+# Screenshot current focused window
+bindsym Shift+Print exec "scrot -q 85 -u '/home/lyndaoleary/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png'"
+
 exec --no-startup-id dbus-launch /usr/bin/nm-applet
 exec --no-startup-id xsetroot -solid "#1B1C1D"
