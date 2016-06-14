@@ -15,7 +15,8 @@ load_dotfiles() {
         $HOME/dotfiles/shell/bash_prompt # Custom bash prompt
         $HOME/dotfiles/shell/bash_paths # Path modifications
         $HOME/.bash_profile.local # Local and private settings not under version control (e.g. git credentials)
-    )
+				$HOME/.proxy # Temporary file to hold proxy config
+		)
 
     # if these files are readable, source them
     for index in ${!files[*]}
@@ -31,4 +32,3 @@ unset enable_bash_completion
 
 load_dotfiles
 unset load_dotfiles
-

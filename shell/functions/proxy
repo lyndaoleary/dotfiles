@@ -1,0 +1,23 @@
+#!/bin/bash
+
+function enable_proxy() {
+	cat >~/.proxy <<EOF
+#!/bin/bash
+export {http,https,ftp}_proxy=$1
+export {HTTP,HTTPS,FTP}_PROXY=$1
+export {NO_PROXY,no_proxy}=127.0.0.1,localhost,/var/run/docker.sock
+EOF
+
+	sudo bash -c "cat >/etc/apt/apt.conf.d/95proxies" <<EOF
+Acquire::http::proxy "$1";
+Acquire::ftp::proxy "$1";
+Acquire::https::proxy "$1";
+EOF
+
+	source ~/.proxy
+}
+
+function disable_proxy() {
+	rm -f ~/.proxy
+	sudo rm -f /etc/apt/apt.conf.d/95proxies
+}
