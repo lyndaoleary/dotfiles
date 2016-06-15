@@ -65,7 +65,6 @@ setup_base() {
 		libappindicator1 \
 		keepassx \
 		tlp \
-		syncthing \
 		virtualbox
 
 	apt-get autoremove
@@ -89,6 +88,16 @@ setup_neovim() {
 	update-alternatives --config editor
 
 	pip install neovim
+}
+
+setup_syncthing() {
+	apt-get install -y
+		syncthing
+
+	ln -snf "$HOME/dotfiles/etc/systemd/system/syncthing@.service" /etc/systemd/system/syncthing@.service
+
+	systemctl daemon-reload
+	systemctl enable syncthing@${USERNAME}
 }
 
 setup_docker() {
