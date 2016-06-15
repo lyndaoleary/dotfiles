@@ -37,21 +37,9 @@ setup_sources() {
 	wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add -
 	echo "deb [arch=amd64] https://dl.google.com/linux/chrome/deb/ stable main" > /etc/apt/sources.list.d/google-chrome.list
 
-	# Atom
-	apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 7B2C3B0889BF5709A105D03AC2518248EEA14886
-	echo "deb http://ppa.launchpad.net/webupd8team/atom/ubuntu xenial main" > /etc/apt/sources.list.d/atom.list
-
 	# Docker
 	apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 58118E89F3A912897C070ADBF76221572C52609D
 	echo "deb https://apt.dockerproject.org/repo ubuntu-xenial main" > /etc/apt/sources.list.d/docker.list
-
-	# Ansible
-	apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 6125E2A8C77F2818FB7BD15B93C4A3FD7BB9C367
-	echo "deb http://ppa.launchpad.net/ansible/ansible/ubuntu xenial main" > /etc/apt/sources.list.d/ansible.list
-
-	# VirtualBox
-	wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
-	echo "deb http://download.virtualbox.org/virtualbox/debian xenial contrib" > /etc/apt/sources.list.d/virtualbox.list
 
 	# Neovim
 	apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 9DBB0BE9366964F134855E2255F96FCF8231B6DD
@@ -69,19 +57,16 @@ setup_base() {
 	apt-get upgrade -y
 
 	apt-get install -y \
-		ansible \
 		alsa-utils \
-		atom \
 		rxvt-unicode-256color \
 		network-manager \
-		openvpn \
 		google-chrome-stable \
 		libappindicator3-1 \
 		libappindicator1 \
 		keepassx \
 		tlp \
 		syncthing \
-		virtualbox-5.0
+		virtualbox
 
 	apt-get autoremove
 	apt-get autoclean
@@ -125,7 +110,6 @@ setup_wm() {
 		slim \
 		xorg \
 		network-manager-gnome \
-		network-manager-openvpn-gnome \
 		gnome-keyring \
 		xserver-xorg
 }
