@@ -133,6 +133,8 @@ setup_wm() {
 		network-manager-openvpn-gnome \
 		gnome-keyring \
 		xserver-xorg
+
+	mkdir -p $HOME/Pictures/Screenshots
 }
 
 main() {
