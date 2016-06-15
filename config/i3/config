@@ -159,5 +159,15 @@ bindsym $mod+Print exec "sleep 0.2; scrot -q 85 -s '/home/lyndaoleary/Pictures/S
 # Screenshot current focused window
 bindsym Shift+Print exec "scrot -q 85 -u '/home/lyndaoleary/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png'"
 
+# audio controls
+bindsym XF86AudioRaiseVolume exec amixer set Master 5+ #increase sound volume
+bindsym XF86AudioLowerVolume exec amixer set Master 5- #decrease sound volume
+bindsym XF86AudioMute exec amixer set Master 1+ toggle # mute sound
+bindsym XF86AudioMicMute exec amixer set Capture toggle # mute mic
+
+# screen brightness controls
+bindsym XF86MonBrightnessUp exec sudo light -A 5 # increase screen brightness
+bindsym XF86MonBrightnessDown exec sudo light -U 5 # decrease screen brightness
+
 exec --no-startup-id dbus-launch /usr/bin/nm-applet
 exec --no-startup-id xsetroot -solid "#1B1C1D"
