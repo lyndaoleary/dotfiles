@@ -28,6 +28,7 @@ setup_dotfiles() {
 }
 
 setup_config() {
+	mkdir -p $HOME/.config
 	for f in config/*; do
 		ln -sfn $HOME/dotfiles/$f $HOME/.$f
 	done
@@ -67,7 +68,6 @@ setup_base() {
 	apt-get install -y \
 		ansible \
 		alsa-utils \
-		atom \
 		rxvt-unicode-256color \
 		network-manager \
 		openvpn \
