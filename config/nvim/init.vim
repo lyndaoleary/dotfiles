@@ -75,7 +75,7 @@ endif
 NeoBundle 'honza/vim-snippets'
 
 "" Color
-NeoBundle 'tomasr/molokai'
+NeoBundle 'w0ng/vim-hybrid'
 
 "" Vim-Bootstrap Updater by sherzberg
 NeoBundle 'avelino/vim-bootstrap-updater'
@@ -150,9 +150,12 @@ syntax on
 set ruler
 set number
 
+let g:hybrid_custom_term_colors = 1
+set background=dark
+
 let no_buffers_menu=1
 if !exists('g:not_finsh_neobundle')
-  colorscheme molokai
+  colorscheme hybrid
 endif
 
 set mousemodel=popup
@@ -197,7 +200,7 @@ if exists("*fugitive#statusline")
 endif
 
 " vim-airline
-let g:airline_theme = 'powerlineish'
+let g:airline_theme = 'hybrid'
 let g:airline#extensions#syntastic#enabled = 1
 let g:airline#extensions#branch#enabled = 1
 let g:airline#extensions#tabline#enabled = 1

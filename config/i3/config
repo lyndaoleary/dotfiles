@@ -11,9 +11,28 @@
 
 set $mod Mod4
 
+set $color_light_blue #81a2be
+set $color_dark_blue #5f819d
+set $color_light_red #cc6666
+set $color_dark_red #a54242
+set $color_light_green #b5bd68
+set $color_dark_green #8c9440
+set $color_light_gray #373b41
+set $color_dark_gray #282a2e
+set $color_light_white #c5c8c6
+set $color_dark_white #707880
+
+set $color_text #fefefe
+set $color_bg #282a2e
+set $color_active #5f819d
+
+client.focused $color_light_gray $color_light_gray $color_text $color_light_blue
+client.unfocused $color_dark_gray $color_dark_gray $color_dark_white
+client.focused_inactive $color_light_gray $color_light_gray $color_dark_white
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 10
+font xft:Inconsolita 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -141,25 +160,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-set $color_light_blue #81a2be
-set $color_dark_blue #5f819d
-set $color_light_red #cc6666
-set $color_dark_red #a54242
-set $color_light_green #b5bd68
-set $color_dark_green #8c9440
-set $color_light_gray #373b41
-set $color_dark_gray #282a2e
-set $color_light_white #c5c8c6
-set $color_dark_white #707880
-
-set $color_text #fefefe
-set $color_bg #282a2e
-set $color_active #5f819d
-
-client.focused $color_light_gray $color_light_gray $color_text $color_light_blue
-client.unfocused $color_dark_gray $color_dark_gray $color_dark_white
-client.focused_inactive $color_light_gray $color_light_gray $color_dark_white
-
 # spotify: no border
 for_window [class="^Spotify$"] border none
 for_window [class="^Spotify Premium$"] border none
@@ -198,9 +198,7 @@ bindsym XF86AudioMicMute exec amixer set Capture toggle # mute mic
 bindsym XF86MonBrightnessUp exec sudo light -A 5 # increase screen brightness
 bindsym XF86MonBrightnessDown exec sudo light -U 5 # decrease screen brightness
 
-# run the merge for good colors
-exec xrdb -merge /home/lynda/.Xresources
-exec xrdb -merge /home/lynda/.Xdefaults
+exec if [ -e ~/.Xresources ]; then xrdb -merge ~/.Xresources; fi
 
 exec --no-startup-id dbus-launch /usr/bin/nm-applet
 exec --no-startup-id xsetroot -solid "#1B1C1D"
