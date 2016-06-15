@@ -134,7 +134,7 @@ setup_wm() {
 		gnome-keyring \
 		xserver-xorg
 
-	mkdir -p $HOME/Pictures/Screenshots
+	mkdir -p /home/$USERNAME/Pictures/Screenshots
 }
 
 main() {

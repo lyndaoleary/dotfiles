@@ -167,7 +167,7 @@ for_window [class="^Spotify Premium$"] border none
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
 bar {
-        status_command i3status
+        status_command i3status --config ~/.config/i3/status.conf
         colors {
             focused_workspace $color_light_blue $color_dark_blue $color_light_white
             active_workspace $color_light_blue $color_dark_blue $color_light_white
@@ -182,11 +182,11 @@ bindsym $mod+l exec i3lock -c 111111
 
 # Screenshots
 # Screenshot fullscreen
-bindsym Print exec "scrot -q 85 '/home/lynda/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png'"
+bindsym Print exec scrot -q 90 "${HOME}/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png"
 # Screenshot with selection
-bindsym $mod+Print exec "sleep 0.2; scrot -q 85 -s '/home/lynda/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png'"
+bindsym $mod+Print exec sleep 0.2; scrot -q 90 -s "${HOME}/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png"
 # Screenshot current focused window
-bindsym Shift+Print exec "scrot -q 85 -u '/home/lynda/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png'"
+bindsym Shift+Print exec scrot -q 90 -u "${HOME}/Pictures/Screenshots/%Y-%m-%d-%H-%M-%S_$wx$h.png"
 
 # audio controls
 bindsym XF86AudioRaiseVolume exec amixer set Master 5+ #increase sound volume
