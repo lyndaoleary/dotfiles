@@ -50,18 +50,6 @@ setup_sources() {
 	curl -s https://syncthing.net/release-key.txt | apt-key add -
 	echo "deb http://apt.syncthing.net/ syncthing release" | tee /etc/apt/sources.list.d/syncthing.list
 
-	# VirtualBox
-	wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
-	echo "deb http://download.virtualbox.org/virtualbox/debian xenial contrib" > /etc/apt/sources.list.d/virtualbox.list
-
-	# Neovim
-	apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 9DBB0BE9366964F134855E2255F96FCF8231B6DD
-	echo "deb http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu xenial main" > /etc/apt/sources.list.d/neovim.list
-
-	# Syncthing
-	curl -s https://syncthing.net/release-key.txt | apt-key add -
-	echo "deb http://apt.syncthing.net/ syncthing release" | tee /etc/apt/sources.list.d/syncthing.list
-
 }
 
 setup_base() {
@@ -70,19 +58,15 @@ setup_base() {
 	apt-get upgrade -y
 
 	apt-get install -y \
-		ansible \
 		alsa-utils \
-		atom \
 		rxvt-unicode-256color \
 		network-manager \
-		openvpn \
 		google-chrome-stable \
 		libappindicator3-1 \
 		libappindicator1 \
 		keepassx \
 		tlp \
-		syncthing \
-		virtualbox-5.0
+		virtualbox
 
 	apt-get autoremove
 	apt-get autoclean
@@ -136,7 +120,6 @@ setup_wm() {
 		slim \
 		xorg \
 		network-manager-gnome \
-		network-manager-openvpn-gnome \
 		gnome-keyring \
 		xserver-xorg
 }
