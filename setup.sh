@@ -73,6 +73,8 @@ setup_base() {
 		google-chrome-stable \
 		libappindicator3-1 \
 		libappindicator1 \
+		keepassx \
+		tlp \
 		virtualbox-5.0
 
 	apt-get autoremove
