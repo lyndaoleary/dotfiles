@@ -56,6 +56,11 @@ setup_sources() {
 	# Neovim
 	apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 9DBB0BE9366964F134855E2255F96FCF8231B6DD
 	echo "deb http://ppa.launchpad.net/neovim-ppa/unstable/ubuntu xenial main" > /etc/apt/sources.list.d/neovim.list
+
+	# Syncthing
+	curl -s https://syncthing.net/release-key.txt | apt-key add -
+	echo "deb http://apt.syncthing.net/ syncthing release" | tee /etc/apt/sources.list.d/syncthing.list
+
 }
 
 setup_base() {
@@ -75,6 +80,7 @@ setup_base() {
 		libappindicator1 \
 		keepassx \
 		tlp \
+		syncthing \
 		virtualbox-5.0
 
 	apt-get autoremove
