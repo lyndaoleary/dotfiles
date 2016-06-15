@@ -161,7 +161,7 @@ endif
 set mousemodel=popup
 set t_Co=256
 set guioptions=egmrti
-set gfn=Monospace\ 10
+set gfn=Inconsolata\ 17
 
 if has("gui_running")
   if has("gui_mac") || has("gui_macvim")
