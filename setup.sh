@@ -22,6 +22,8 @@ setup_dotfiles() {
 	ln -snf "$HOME/dotfiles/Xdefaults" "$HOME/.Xdefaults"
 	ln -snf "$HOME/dotfiles/Xresources" "$HOME/.Xresources"
 	ln -snf "$HOME/dotfiles/xsessionrc" "$HOME/.xsessionrc"
+	ln -snf "$HOME/dotfiles/usr/local/bin/light" /usr/local/bin/light
+	ln -snf "$HOME/dotfiles/etc/modprobe.d/intel.conf" /etc/modprobe.d/intel.conf
 }
 
 setup_config() {
@@ -63,6 +65,7 @@ setup_base() {
 
 	apt-get install -y \
 		ansible \
+		alsa-utils \
 		atom \
 		rxvt-unicode-256color \
 		network-manager \
