@@ -52,8 +52,8 @@ setup_sources() {
 	echo "deb http://apt.syncthing.net/ syncthing release" | tee /etc/apt/sources.list.d/syncthing.list
 
 	# VirtualBox
-	wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
-	echo "deb http://download.virtualbox.org/virtualbox/debian xenial contrib" > /etc/apt/sources.list.d/virtualbox.list
+	# wget -q https://www.virtualbox.org/download/oracle_vbox_2016.asc -O- | apt-key add -
+	# echo "deb http://download.virtualbox.org/virtualbox/debian xenial contrib" > /etc/apt/sources.list.d/virtualbox.list
 
 	# Neovim
 	apt-key adv --keyserver hkp://p80.pool.sks-keyservers.net:80 --recv-keys 9DBB0BE9366964F134855E2255F96FCF8231B6DD
@@ -75,8 +75,8 @@ setup_base() {
 		libappindicator3-1 \
 		libappindicator1 \
 		keepassx \
-		tlp \
-		virtualbox-5.0
+		tlp 
+		# virtualbox-5.0
 
 	apt-get autoremove
 	apt-get autoclean
